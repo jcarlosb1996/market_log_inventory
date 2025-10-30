@@ -1,0 +1,10 @@
+{% extends "marketlog/base.html" %} {% block title %}Sell {{ item.title }} ·
+MarketLog{% endblock %} {% block content %}
+<h2 class="mb-3">Sell: {{ item.title }} ({{ channel }})</h2>
+<p>Available stock: <strong>{{ item.quantity }}</strong></p>
+<form method="post" class="bg-white p-3 border rounded">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit" class="btn btn-success">Confirm Sale</button>
+  <a href="{% url 'inventory' %}" class="btn btn-link">Cancel</a>
+</form>
+{% endblock %}
